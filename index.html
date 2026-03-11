@@ -23,15 +23,14 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { overflow-x: hidden; }
         body { font-family: 'Arial', sans-serif; background: var(--off-white); color: var(--text-dark); line-height: 1.6; overflow-x: hidden; }
-        #loading-page { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg,#1a0000 0%,#2d0000 50%,#1a0000 100%); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 9999; overflow: hidden; }
-        #loading-page::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 50% 50%, rgba(255,140,0,0.15) 0%, transparent 50%); }
+        #loading-page { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #ffffff; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 9999; }
         #loading-page.hidden { opacity: 0; pointer-events: none; transition: opacity 0.5s ease; }
-        .loader-logo { width: 120px; height: 120px; overflow: hidden; animation: pulse 2s ease-in-out infinite; position: relative; z-index: 1; margin-bottom: 30px; }
-        .loader-text { font-size: 2.2rem; color: #FF0000; font-weight: 800; margin-bottom: 40px; letter-spacing: 8px; text-shadow: 0 0 30px rgba(255,0,0,0.5); animation: textGlow 2s ease-in-out infinite alternate; }
-        @keyframes textGlow { from { text-shadow: 0 0 20px rgba(255,0,0,0.4); } to { text-shadow: 0 0 40px rgba(255,0,0,0.8), 0 0 80px rgba(255,140,0,0.4); } }
-        .progress-container { width: 300px; height: 8px; background: rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden; position: relative; z-index: 1; box-shadow: inset 0 2px 10px rgba(0,0,0,0.3); }
-        .progress-bar { height: 100%; background: linear-gradient(90deg, #FF0000, #FF8C00); border-radius: 10px; width: 0%; animation: loading 2s ease-in-out forwards; box-shadow: 0 0 20px rgba(255,140,0,0.5); }
+        .loader-logo { width: 120px; height: 120px; overflow: hidden; margin-bottom: 30px; }
+        .loader-text { font-size: 2rem; color: #333; font-weight: bold; margin-bottom: 30px; letter-spacing: 5px; }
+        .progress-container { width: 250px; height: 6px; background: #eee; border-radius: 3px; overflow: hidden; }
+        .progress-bar { height: 100%; background: #8B0000; border-radius: 3px; width: 0%; animation: loading 2s ease-in-out forwards; }
         @keyframes loading { 0% { width: 0%; } 100% { width: 100%; } }
+        .loading-text { font-size: 0.9rem; color: #666; margin-top: 15px; letter-spacing: 2px; }
         .loading-text { margin-top: 20px; color: #FF8C00; font-size: 0.9rem; letter-spacing: 3px; font-weight: 500; }
         #main-website { display: none; }
         #main-website.visible { display: block; animation: fadeIn 0.8s ease; }
@@ -73,12 +72,15 @@
         .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 0 5%; background: url('background.jpeg'); background-size: cover; background-position: center; position: relative; overflow: hidden; }
         .hero::before { content: ''; position: absolute; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); }
         .hero-content { max-width: 600px; color: white; position: relative; z-index: 2; text-align: center; }
+        .hero-content p { font-size: 0.95rem; line-height: 1.6; }
         .hero-logo { width: 180px; height: 180px; margin-bottom: 25px; object-fit: contain; background: transparent; animation: float 3s ease-in-out infinite; }
         @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
         @keyframes pulse { 0%, 100% { box-shadow: 0 0 30px rgba(255, 140, 0, 0.4); } 50% { box-shadow: 0 0 50px rgba(255, 140, 0, 0.7); } }
         .hero h2 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; animation: slideUp 0.8s ease; color: #FF8C00; }
         .hero p { font-size: 1.2rem; margin-bottom: 30px; opacity: 0.95; animation: slideUp 0.8s ease 0.2s both; }
         @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideDown { from { opacity: 0; transform: translateX(-50%) translateY(-30px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
+        @keyframes slideOut { from { opacity: 1; transform: translateX(-50%) translateY(0); } to { opacity: 0; transform: translateX(-50%) translateY(-20px); } }
         .hero-btns { display: flex; gap: 15px; justify-content: center; animation: slideUp 0.8s ease 0.4s both; }
         .btn { padding: 15px 35px; border-radius: 30px; font-weight: bold; text-decoration: none; transition: all 0.3s ease; display: inline-block; }
         .btn-white { background: #FF8C00; color: #8B0000; }
@@ -641,9 +643,12 @@ Diabetes, hypertension, Cholesterol and Cancer etc
             <section class="about-section">
                 <div style="padding: 100px 5% 20px;"><button onclick="showPage('home')" style="background:#8B0000;color:white;padding:12px 25px;border:none;border-radius:25px;cursor:pointer;font-size:1rem;">← Back</button></div>
                 <div class="section-header"><h2>About Pranajeewa</h2></div>
-                <div style="max-width:800px;margin:0 auto 40px;padding:0 5%;"><iframe width="100%" height="400" src="https://www.youtube.com/embed/VJ4A7dPJtFM?si=m00GveamjXND2zUI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
                 <div class="about-grid">
-                    <div class="about-img"><img src="pranajeewa-logo-1.png" alt="About"></div>
+                    <div class="about-img">
+                        <div style="background:rgba(255,255,255,0.95);padding:15px;border-radius:15px;box-shadow:0 5px20px rgba(0,0,0,0.1);">
+                            <iframe width="100%" height="350" src="https://www.youtube.com/embed/VJ4A7dPJtFM?si=m00GveamjXND2zUI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                    </div>
                     <div class="about-text">
                         <h3>Our Story</h3>
                         <p>Sethsuwa Pranajeewa medicine is the most sought after product at Sethsuwa Hospital. It is used both in Sri Lanka and the world over. It was the Buddhist monk Venerable Waga Gnanaloka thero who first treated his hundreds of patients with his traditional medicine, obtained from his Ola leaf inscriptions passed down from generations. The monk at eighty years looked forty, more important was the fact that he led a very active life, waking up at 4.30 a.m., he devoted the early hours of the morning paying reverence for the Lord Buddha. The hours that followed were spent in compassionate treatment by this doctor monk.</p>
@@ -660,6 +665,16 @@ Diabetes, hypertension, Cholesterol and Cancer etc
                     <div style="background:white;padding:15px;border-radius:10px;box-shadow:0 3px15px rgba(0,0,0,0.1);"><img src="ISO 9001 - SETHSUWA AYURVEDA HOSPITAL (PRIVATE) LIMITED.jpg.jpeg" alt="ISO 9001 Certification" style="width:100%;height:auto;border-radius:8px;"></div>
                     <div style="background:white;padding:15px;border-radius:10px;box-shadow:0 3px15px rgba(0,0,0,0.1);"><img src="WhatsApp Image 2026-03-11 at 5.04.17 PM.jpeg" alt="Certification" style="width:100%;height:auto;border-radius:8px;"></div>
                     <div style="background:white;padding:15px;border-radius:10px;box-shadow:0 3px15px rgba(0,0,0,0.1);"><img src="WhatsApp Image 2026-03-11 at 5.04.19 PM.jpeg" alt="Certification" style="width:100%;height:auto;border-radius:8px;"></div>
+                </div>
+            </div>
+            <div style="max-width:1000px;margin:0 auto;padding:0 5% 50px;">
+                <div style="background:white;padding:30px;border-radius:15px;box-shadow:0 5px20px rgba(0,0,0,0.1);text-align:center;">
+                    <img src="about us.jpg" alt="About Us" style="max-width:100%;height:auto;border-radius:10px;margin-bottom:25px;">
+                    <p style="font-size:1.1rem;color:#333;line-height:1.8;margin-bottom:20px;">We, as the Setsuwa Ayurveda Hospital Company received the <span style="background:#FFD700;color:#8B0000;padding:3px 10px;border-radius:5px;font-weight:bold;">Best Inventor of the Year 2023 award</span> at the award ceremony organized by the Sri Lanka Chamber of Commerce.</p>
+                    <p style="font-size:1.1rem;color:#333;line-height:1.8;margin-bottom:20px;">It is the faith each and every one of our clients has in us. We are sincerely appreciated it.</p>
+                    <p style="font-size:1.1rem;color:#333;line-height:1.8;margin-bottom:10px;">Thank you very much you all.</p>
+                    <h4 style="color:#8B0000;font-size:1.3rem;margin-top:20px;">Doctor Sujeeva Prasanna Withanage</h4>
+                    <p style="color:#666;font-size:1rem;">Managing Director<br>Setsuwa Ayurveda Hospital</p>
                 </div>
             </div>
             <div class="stats">
@@ -839,9 +854,14 @@ Diabetes, hypertension, Cholesterol and Cancer etc
                     </div>
                     <div class="footer-link-group">
                         <h4>Contact</h4>
-                        <p>📍 Batalanda, Sri Lanka</p>
-                        <p>📞 +94 11 234 5678</p>
-                        <p>✉️ info@pranajeewa.com</p>
+                        <p>📍 Sethsuwa Pranajeewa</p>
+                        <p>No 258/19, Vihara Mawatha, Batalanda Road</p>
+                        <p>Makola South</p>
+                        <p>📞 (+94) 112 964023</p>
+                        <p>📞 (+94) 112 962008</p>
+                        <p>✉️ info@pranajeewa.lk</p>
+                        <p>✉️ pranajeewa@hotmail.com</p>
+                        <p>🔥 HOT: +94 (70) 4744700</p>
                     </div>
                 </div>
                 <div class="footer-simple-social">
@@ -852,6 +872,7 @@ Diabetes, hypertension, Cholesterol and Cancer etc
                 </div>
                 <div class="footer-simple-copyright">
                     <p>© 2024 Pranajeewa 🌿 All Rights Reserved</p>
+                    <p style="margin-top:10px;font-size:0.85rem;">Developed by <a href="https://sitesn4p.netlify.app" target="_blank" style="color:#FF8C00;text-decoration:none;">SiteSnap</a></p>
                 </div>
             </div>
         </footer>
@@ -860,9 +881,9 @@ Diabetes, hypertension, Cholesterol and Cancer etc
     <script>
         (function() { emailjs.init("IDmKdyQasLxiJ9S6J"); })();
         const products = [
-            { id: 1, image:"DSC02086.jpg", name: "Pranajeewa Oil", price: 600, description: "Sethsuwa Pranajeewa is made according to an ancient herbal formula that dates back to over 3000 years. The current formula was recorded over 200 years ago and remained unchanged. It contains over 200 herbs from deep in the Sri Lankan forest. The fresh hand-picked herbs are washed, cut and dried to make this medicine which is simmered in heavy stainless steel cauldrons for over four months continuously during which time the goodness of the herbs are absorbed into the five oils. The procedure involved in the making of Pranajeewa Oil is accurate, yet it is as ancient today as it was two hundred years ago. The procedure takes an average of four to four and half months. Rare and precious herbs go into the making of the oil. Pranajeewa does not contain preservatives, colorings, poisonous chemicals, micro-organisms or bacteria, ash particles, sugar, or yeast additives because the ancient recipe does not call for these harmful additions.", benefits: "60ml - LKR 600 (Local) | 180ml - LKR 1,500 (Local) | 375ml - LKR 3,000 (Local) | 375ml Export - LKR 8,000 | Capsule 48 - LKR 1,500 | Capsule 80 - LKR 2,500", size: "60ml" },
-            { id: 2, image: "DSC00706.jpg", name: "Stress Relief", price: 8000, description: "Find calm and relaxation with our herbal blend of traditional herbs.", benefits: "Reduces stress • Promotes relaxation • Improves sleep • Mental clarity • Natural calming", size: "250ml" },
-            { id: 3, image: "DSC00802.jpg", name: "Joint Care", price: 11000, description: "Support healthy joints and mobility with our special formula.", benefits: "Joint flexibility • Reduces stiffness • Bone health • Anti-inflammatory • Pain relief", size: "250ml" },
+            { id: 1, image: ["DSC02086.jpg", "DSC00565.jpg"], name: "Pranajeewa Oil and Capsule", price: 600, description: "Sethsuwa Pranajeewa is made according to an ancient herbal formula that dates back to over 3000 years. The current formula was recorded over 200 years ago and remained unchanged. It contains over 200 herbs from deep in the Sri Lankan forest. The fresh hand-picked herbs are washed, cut and dried to make this medicine which is simmered in heavy stainless steel cauldrons for over four months continuously during which time the goodness of the herbs are absorbed into the five oils. The procedure involved in the making of Pranajeewa Oil is accurate, yet it is as ancient today as it was two hundred years ago. The procedure takes an average of four to four and half months. Rare and precious herbs go into the making of the oil. Pranajeewa does not contain preservatives, colorings, poisonous chemicals, micro-organisms or bacteria, ash particles, sugar, or yeast additives because the ancient recipe does not call for these harmful additions.", benefits: "60ml - LKR 600 (Local) | 180ml - LKR 1,500 (Local) | 375ml - LKR 3,000 (Local) | 375ml Export - LKR 8,000 | Capsule 48 - LKR 1,500 | Capsule 80 - LKR 2,500", size: "60ml" },
+            { id: 2, image: "DSC01014.jpg", name: "Maha Narayana Oil", price: 450, description: "Narayana Oil is being used for thousands of years in Ayurvedic System of medicine. It is indicated in conditions like paralysis, facial paralysis, back ache, sciatica, impotence, muscle waisting, as an external application on head for high blood pressure etc. It is very effective for massage purposes even for healthy people as it rejuvenate the body.  Narayana Oil is being used for thousands of years in Ayurvedic System of medicine. It is indicated in conditions like paralysis, facial paralysis, back ache, sciatica, impotence, muscle waisting, as an external application on head for high blood pressure etc. It is very effective for massage purposes even for healthy people as it rejuvenate the body.", benefits: "Maha Narayanaya 60ml - LKR 450 | Maha Narayanaya 180ml - LKR 1250", size: "60ml" },
+            { id: 3, image: "DSC01102.jpg", name: "Maha Siddartha", price: 400, description: "Maha Siddartha made with Authentic Quality herbs according to an ancient recipe. Siddhartha Oil is being used for thousands of year in Ayurvedic system of medicine. Effective for the relief of nerve and muscular pain. It is indicated in conditions like Paralysis, facial paralysis, sciatica as an external application. Particularly effective for muscular pains in the chest, neck and shoulders. Maha Siddartha made with Authentic Quality herbs according to an ancient recipe. Siddhartha Oil is being used for thousands of year in Ayurvedic system of medicine. Effective for the relief of nerve and muscular pain. It is indicated in conditions like Paralysis, facial paralysis, sciatica as an external application. Particularly effective for muscular pains in the chest, neck and shoulders.", benefits: "Maha Siddartha 60ml - LKR 400 | Maha Siddartha 180ml - LKR 1050", size: "60ml" },
             { id: 4, image: "DSC00882.jpg", name: "Blood Purifier", price: 7500, description: "Natural blood cleansing formula to purify your body.", benefits: "Cleans blood • Clear skin • Removes toxins • Improves circulation • Healthy glow", size: "250ml" },
             { id: 5, image: "DSC00921.jpg", name: "Digestive Health", price: 6500, description: "Improve digestion naturally with our Ayurvedic blend.", benefits: "Better digestion • Less bloating • Gut health • Nutrient absorption • Regular metabolism", size: "250ml" },
             { id: 6, image: "DSC00990.jpg", name: "Sleep Support", price: 9000, description: "Get restful sleep naturally with our herbal formula.", benefits: "Deep sleep • Relaxation • Wake up refreshed • Insomnia relief • Natural remedy", size: "250ml" },
@@ -923,8 +944,9 @@ Diabetes, hypertension, Cholesterol and Cancer etc
             }
             filteredProducts.forEach(product => {
                 const card = document.createElement("div");
+                const prodImage = Array.isArray(product.image) ? product.image[0] : product.image;
                 card.className = "product-card";
-                card.innerHTML = '<div class="product-img" onclick="viewProduct(' + product.id + ')"><img src="' + product.image + '" alt="' + product.name + '"></div><div class="product-info"><h3>' + product.name + '</h3><div class="price">' + formatPrice(product.price) + ' <span style="font-size:0.8rem;color:#FF8C00;">📦 ' + (product.size || '250ml') + '</span></div><p>' + product.description + '</p><button class="product-btn" onclick="addToCart(' + product.id + ')">Add to Cart</button></div>';
+                card.innerHTML = '<div class="product-img" onclick="viewProduct(' + product.id + ')"><img src="' + prodImage + '" alt="' + product.name + '"></div><div class="product-info"><h3>' + product.name + '</h3><div class="price">' + formatPrice(product.price) + ' <span style="font-size:0.8rem;color:#FF8C00;">📦 ' + (product.size || '250ml') + '</span></div><p>' + product.description + '</p><button class="product-btn" onclick="addToCart(' + product.id + ')">Add to Cart</button></div>';
                 grid.appendChild(card);
             });
         }
@@ -934,8 +956,9 @@ Diabetes, hypertension, Cholesterol and Cancer etc
             grid.innerHTML = '';
             products.forEach(product => {
                 const card = document.createElement("div");
+                const prodImage = Array.isArray(product.image) ? product.image[0] : product.image;
                 card.className = "product-card";
-                card.innerHTML = '<div class="product-img" onclick="viewProduct(' + product.id + ')"><img src="' + product.image + '" alt="' + product.name + '"></div><div class="product-info"><h3>' + product.name + '</h3><div class="price">' + formatPrice(product.price) + ' <span style="font-size:0.8rem;color:#FF8C00;">📦 ' + (product.size || '250ml') + '</span></div><p>' + product.description + '</p><button class="product-btn" onclick="addToCart(' + product.id + ')">Add to Cart</button></div>';
+                card.innerHTML = '<div class="product-img" onclick="viewProduct(' + product.id + ')"><img src="' + prodImage + '" alt="' + product.name + '"></div><div class="product-info"><h3>' + product.name + '</h3><div class="price">' + formatPrice(product.price) + ' <span style="font-size:0.8rem;color:#FF8C00;">📦 ' + (product.size || '250ml') + '</span></div><p>' + product.description + '</p><button class="product-btn" onclick="addToCart(' + product.id + ')">Add to Cart</button></div>';
                 grid.appendChild(card);
             });
         }
@@ -946,8 +969,9 @@ Diabetes, hypertension, Cholesterol and Cancer etc
             const featured = products.slice(0, 5);
             featured.forEach(product => {
                 const card = document.createElement("div");
+                const prodImage = Array.isArray(product.image) ? product.image[0] : product.image;
                 card.className = "featured-card";
-                card.innerHTML = '<div class="featured-img" onclick="viewProduct(' + product.id + ')"><img src="' + product.image + '" alt="' + product.name + '"></div><div class="featured-info"><h3>' + product.name + '</h3><div class="price">' + formatPrice(product.price) + '</div><button class="product-btn" onclick="addToCart(' + product.id + ')">Add to Cart</button></div>';
+                card.innerHTML = '<div class="featured-img" onclick="viewProduct(' + product.id + ')"><img src="' + prodImage + '" alt="' + product.name + '"></div><div class="featured-info"><h3>' + product.name + '</h3><div class="price">' + formatPrice(product.price) + '</div><button class="product-btn" onclick="addToCart(' + product.id + ')">Add to Cart</button></div>';
                 grid.appendChild(card);
             });
         }
@@ -960,6 +984,8 @@ Diabetes, hypertension, Cholesterol and Cancer etc
         function renderProductDetails() {
             if (!currentProduct) return;
             const isPranajeewa = currentProduct.id === 1;
+            const isNarayana = currentProduct.id === 2;
+            const isMahaSiddartha = currentProduct.id === 3;
             let sizeOptions = '';
             let priceDisplay = '';
             
@@ -979,6 +1005,20 @@ Diabetes, hypertension, Cholesterol and Cancer etc
                 ];
                 sizeOptions = sizes.map(s => '<option value="' + s.value + '">' + s.label + ' - ' + formatPrice(s.value) + '</option>').join('');
                 priceDisplay = formatPrice(600);
+            } else if (isNarayana) {
+                const sizes = [
+                    { value: 450, label: '60ml' },
+                    { value: 1250, label: '180ml' }
+                ];
+                sizeOptions = sizes.map(s => '<option value="' + s.value + '">' + s.label + ' - ' + formatPrice(s.value) + '</option>').join('');
+                priceDisplay = formatPrice(450);
+            } else if (isMahaSiddartha) {
+                const sizes = [
+                    { value: 400, label: '60ml' },
+                    { value: 1050, label: '180ml' }
+                ];
+                sizeOptions = sizes.map(s => '<option value="' + s.value + '">' + s.label + ' - ' + formatPrice(s.value) + '</option>').join('');
+                priceDisplay = formatPrice(400);
             } else {
                 sizeOptions = '<option value="1">250ml - Standard Size</option><option value="1.6">400ml - Large Size (+60%)</option>';
                 priceDisplay = formatPrice(currentProduct.price);
@@ -1001,7 +1041,7 @@ Diabetes, hypertension, Cholesterol and Cancer etc
         }
         function updatePriceBySize() {
             const sizeSelect = document.getElementById("bottleSize");
-            if (currentProduct.id === 1) {
+            if (currentProduct.id === 1 || currentProduct.id === 2 || currentProduct.id === 3) {
                 const newPrice = parseFloat(sizeSelect.value);
                 document.getElementById("detailPrice").textContent = formatPrice(newPrice);
             } else {
@@ -1015,8 +1055,12 @@ Diabetes, hypertension, Cholesterol and Cancer etc
             const sizeSelect = document.getElementById("bottleSize");
             let adjustedPrice;
             let sizeName;
-            if (productId === 1) {
-                // Size values are already in LKR
+            
+            // Get the main image - handle array or single image
+            const productImage = Array.isArray(product.image) ? product.image[0] : product.image;
+            
+            if (productId === 1 || productId === 2 || productId === 3) {
+                // Size values are already in LKR for Pranajeewa, Narayana and Maha Siddartha
                 adjustedPrice = parseFloat(sizeSelect.value);
                 sizeName = sizeSelect.options[sizeSelect.selectedIndex].text;
             } else {
@@ -1024,11 +1068,12 @@ Diabetes, hypertension, Cholesterol and Cancer etc
                 adjustedPrice = product.price * sizeMultiplier;
                 sizeName = sizeSelect ? sizeSelect.options[sizeSelect.selectedIndex].text : "250ml";
             }
-            const productWithSize = { ...product, price: adjustedPrice, size: sizeName };
+            const productWithSize = { ...product, image: productImage, price: adjustedPrice, size: sizeName };
             const existingItem = cart.find(item => item.id === productId && item.size === sizeName);
             if (existingItem) { existingItem.quantity += 1; }
             else { cart.push({ ...productWithSize, quantity: 1 }); }
             updateCartCount();
+            showNotification("🛒 " + product.name + " added to cart!");
             renderCart();
             showNotification("✅ " + product.name + " (" + sizeName + ") added to cart!");
         }
@@ -1040,7 +1085,7 @@ Diabetes, hypertension, Cholesterol and Cancer etc
         function goToCart() { showPage("cart"); history.pushState(null, "", "#cart"); }
         function showNotification(message) {
             const notification = document.createElement("div");
-            notification.style.cssText = "position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:white;color:#8B0000;padding:15px 30px;border-radius:30px;box-shadow:0 5px 20px rgba(0,0,0,0.2);z-index:9999;animation:slideUp 0.3s ease;border:2px solid #FF8C00;font-weight:bold;";
+            notification.style.cssText = "position:fixed;top:90px;left:50%;transform:translateX(-50%);background:white;color:#333;padding:15px 30px;border-radius:8px;box-shadow:0 4px 15px rgba(0,0,0,0.15);z-index:9999;animation:slideDown 0.3s ease;border:1px solid #ddd;font-weight:500;font-size:1rem;";
             notification.textContent = message;
             document.body.appendChild(notification);
             setTimeout(() => { notification.style.animation = "slideOut 0.3s ease"; setTimeout(() => notification.remove(), 300); }, 3000);
@@ -1109,6 +1154,7 @@ Diabetes, hypertension, Cholesterol and Cancer etc
         }
         function checkout() {
             if (cart.length === 0) { showNotification("🛒 Your cart is empty! Add some products first."); return; }
+            showNotification("🛍️ Proceeding to checkout...");
             renderCheckout();
             showPage("checkout");
             history.pushState(null, "", "#checkout");
