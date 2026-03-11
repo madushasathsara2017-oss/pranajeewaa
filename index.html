@@ -768,10 +768,10 @@ Diabetes, hypertension, Cholesterol and Cancer etc
                     <div style="max-width:100%;margin:30px auto;padding:0 5%;"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.798467179138!2d79.92330631477247!3d6.91465719514031!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2566a4074c3d%3A0x7e94f3c4c8e1c2d0!2sSethsuwa%20Ayurveda%20Hospital!5e0!3m2!1sen!2slk!4v1620000000000!5m2!1sen!2slk" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe></div>
                     <div class="contact-form-wrapper">
                         <div class="form-title">Send us a Message</div>
-                        <form id="contactForm">
-                            <div class="form-grid"><div class="input-group"><input type="text" placeholder="Your Name" required></div><div class="input-group"><input type="email" placeholder="Your Email" required></div></div>
-                            <div class="input-group"><input type="text" placeholder="Subject"></div>
-                            <div class="input-group"><textarea rows="5" placeholder="Write your message..."></textarea></div>
+                        <form id="contactForm" action="https://formspree.io/f/mzdadnvv" method="POST">
+                            <div class="form-grid"><div class="input-group"><input type="text" name="name" placeholder="Your Name" required></div><div class="input-group"><input type="email" name="email" placeholder="Your Email" required></div></div>
+                            <div class="input-group"><input type="text" name="subject" placeholder="Subject"></div>
+                            <div class="input-group"><textarea name="message" rows="5" placeholder="Write your message..." required></textarea></div>
                             <button type="submit" class="btn-submit">Send Message</button>
                         </form>
                     </div>
@@ -1061,8 +1061,14 @@ Diabetes, hypertension, Cholesterol and Cancer etc
             
             if (productId === 1 || productId === 2 || productId === 3) {
                 // Size values are already in LKR for Pranajeewa, Narayana and Maha Siddartha
-                adjustedPrice = parseFloat(sizeSelect.value);
-                sizeName = sizeSelect.options[sizeSelect.selectedIndex].text;
+                // If no size selector (like in featured products), use default size
+                if (!sizeSelect) {
+                    adjustedPrice = product.price;
+                    sizeName = product.size || "60ml";
+                } else {
+                    adjustedPrice = parseFloat(sizeSelect.value);
+                    sizeName = sizeSelect.options[sizeSelect.selectedIndex].text;
+                }
             } else {
                 const sizeMultiplier = sizeSelect ? parseFloat(sizeSelect.value) : 1;
                 adjustedPrice = product.price * sizeMultiplier;
@@ -1073,7 +1079,6 @@ Diabetes, hypertension, Cholesterol and Cancer etc
             if (existingItem) { existingItem.quantity += 1; }
             else { cart.push({ ...productWithSize, quantity: 1 }); }
             updateCartCount();
-            showNotification("🛒 " + product.name + " added to cart!");
             renderCart();
             showNotification("✅ " + product.name + " (" + sizeName + ") added to cart!");
         }
@@ -1213,7 +1218,25 @@ Diabetes, hypertension, Cholesterol and Cancer etc
         navLinks.forEach(link => { link.addEventListener("click", function(e) { e.preventDefault(); const pageId = this.getAttribute("data-page"); showPage(pageId); history.pushState(null, "", "#" + pageId); document.getElementById("navMenu").classList.remove("active"); document.getElementById("mobileToggle").classList.remove("active"); }); });
         document.getElementById("mobileToggle").addEventListener("click", function() { document.getElementById("navMenu").classList.toggle("active"); this.classList.toggle("active"); });
         document.querySelectorAll(".faq-question").forEach(btn => { btn.addEventListener("click", function() { this.parentElement.classList.toggle("active"); }); });
-        document.getElementById("contactForm").addEventListener("submit", function(e) { e.preventDefault(); showNotification("📧 Thank you! We will contact you soon."); this.reset(); });
+        document.getElementById("contactForm").addEventListener("submit", async function(e) {
+            e.preventDefault();
+            const form = this;
+            try {
+                const response = await fetch(form.action, {
+                    method: form.method,
+                    body: new FormData(form),
+                    headers: { 'Accept': 'application/json' }
+                });
+                if (response.ok) {
+                    showNotification("📧 Thank you! We will contact you soon.");
+                    form.reset();
+                } else {
+                    showNotification("❌ Something went wrong. Please try again.");
+                }
+            } catch (error) {
+                showNotification("❌ Something went wrong. Please try again.");
+            }
+        });
         const hash = window.location.hash.slice(1); if (hash) showPage(hash);
     </script>
 </body>
