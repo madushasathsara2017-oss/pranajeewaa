@@ -1211,7 +1211,7 @@ Diabetes, hypertension, Cholesterol and Cancer etc
                 });
                 
                 if (response.ok) {
-                    showNotification("🙏 ප්‍රාණාජීව ආයුර්වේට ස්තුතියි! - Thank you for your order!");
+                    showNotification("🙏 Thank you for your order!");
                     cart = []; updateCartCount(); renderCart(); form.reset();
                     setTimeout(() => { showPage("home"); history.pushState(null, "", "#home"); }, 2500);
                 } else {
