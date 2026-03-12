@@ -302,6 +302,13 @@
         .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
         .faq-item.active .faq-answer { max-height: 200px; }
         .faq-answer p { padding: 0 25px 20px; color: #666; }
+        /* Lightbox Styles */
+        .lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 10000; justify-content: center; align-items: center; cursor: pointer; }
+        .lightbox.active { display: flex; }
+        .lightbox img { max-width: 90%; max-height: 90%; border-radius: 10px; box-shadow: 0 10px 50px rgba(0,0,0,0.5); }
+        .lightbox-close { position: absolute; top: 20px; right: 30px; color: white; font-size: 40px; cursor: pointer; }
+        .gallery-item { cursor: pointer; transition: transform 0.3s ease; }
+        .gallery-item:hover { transform: scale(1.02); }
         .contact-section { padding: 100px 5% 50px; background: #fff; }
         .contact-wrapper { max-width: 900px; margin: 0 auto; }
         .contact-header { text-align: center; margin-bottom: 40px; }
@@ -584,6 +591,10 @@
         <div class="loading-text">LOADING</div>
     </div>
     <div id="main-website">
+        <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+            <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+            <img id="lightbox-img" src="" alt="Enlarged Image">
+        </div>
         <div class="floating-cart" onclick="goToCart()">🛒<span class="cart-badge" id="floatingCartBadge">0</span></div>
         <nav>
             <div class="nav-brand">
@@ -597,6 +608,7 @@
                 <li><a href="#services" class="nav-link" data-page="services">Services</a></li>
                 <li><a href="#testimonials" class="nav-link" data-page="testimonials">Reviews</a></li>
                 <li><a href="#hospital" class="nav-link" data-page="hospital">Sethuwa Hospital</a></li>
+                <li><a href="#gallery" class="nav-link" data-page="gallery">Gallery</a></li>
                 <li><a href="#faq" class="nav-link" data-page="faq">FAQ</a></li>
                 <li><a href="#contact" class="nav-link" data-page="contact">Contact</a></li>
                 <li><a href="#cart" class="nav-link cart-icon" data-page="cart">🛒<span class="cart-count" id="cartCount">0</span></a></li>
@@ -706,10 +718,10 @@ Diabetes, hypertension, Cholesterol and Cancer etc
                 <div style="padding: 100px 5% 20px;"><button onclick="showPage('home')" style="background:#8B0000;color:white;padding:12px 25px;border:none;border-radius:25px;cursor:pointer;font-size:1rem;">← Back</button></div>
                 <div class="section-header"><h2>Our Services</h2></div>
                 <div class="services-grid">
-                    <div class="service-card"><div class="service-icon">🧘</div><h3>Panchakarma</h3><p>Complete detoxification therapy for deep cleansing and rejuvenation</p></div>
-                    <div class="service-card"><div class="service-icon">👨‍⚕️</div><h3>Consultation</h3><p>Personalized Ayurvedic consultation with expert Vaidyas</p></div>
-                    <div class="service-card"><div class="service-icon">💆</div><h3>Abhyanga</h3><p>Traditional oil massage for relaxation and healing</p></div>
-                    <div class="service-card"><div class="service-icon">💧</div><h3>Shirodhara</h3><p>Oil pouring therapy for mental peace and balance</p></div>
+                    <div class="service-card"><div class="service-icon">🌿</div><h3>Ayurvedic Wellness Treatment</h3><p>Traditional Ayurvedic treatments for complete mind and body wellness</p></div>
+                    <div class="service-card"><div class="service-icon">🏃</div><h3>Sports Massage Therapy</h3><p>Professional sports massage therapy for athletes and active individuals</p></div>
+                    <div class="service-card"><div class="service-icon">🚢</div><h3>Island wide Delivery & Export</h3><p>Delivery across Sri Lanka and export services to all countries worldwide</p></div>
+                    <div class="service-card"><div class="service-icon">👨‍⚕️</div><h3>Free Consultation</h3><p>Free Ayurvedic consultation with our experienced physicians</p></div>
                 </div>
             </section>
         </div>
@@ -740,6 +752,109 @@ Diabetes, hypertension, Cholesterol and Cancer etc
                         <p>Sethsuwa Ayurveda hospital is where hundreds of people both from the villages and the city trudged in search of cures for their various ailments.</p>
                         <p>This is where those patients whom the western systems had ‘given up on’ have hope and this is where the Physician-in-charge today. Dr. Sujeewa Vithanage with his sound educational backing on the ways and workings of the system of Ayurveda both in the theory and practice take them on and bring them back to life the Ayurveda way.</p>
                     </div>
+                </div>
+            </section>
+        </div>
+        <div id="gallery" class="page">
+            <section class="gallery-section">
+                <div style="padding: 100px 5% 20px;"><button onclick="showPage('home')" style="background:#8B0000;color:white;padding:12px 25px;border:none;border-radius:25px;cursor:pointer;font-size:1rem;">← Back</button></div>
+                <div class="section-header"><h2>Media Coverage & Publications</h2><p>Newspaper articles and events featuring Sethsuwa Pranajeewa</p></div>
+                
+                <!-- Newspaper Articles Section -->
+                <div style="margin-bottom:50px;">
+                    <h3 style="color:#8B0000;font-size:1.5rem;margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid #FF8C00;display:inline-block;">📰 Newspaper Articles</h3>
+                    <div class="gallery-grid" style="grid-template-columns: repeat(4, 1fr);">
+                        <div class="gallery-item" style="aspect-ratio: auto; background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); cursor: pointer;">
+                            <img src="30713751_1020780398070417_7561805376518094848_n.jpg" alt="Newspaper Article" style="width:100%; height:auto; object-fit:cover;">
+                        </div>
+                        <div class="gallery-item" style="aspect-ratio: auto; background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                            <img src="32116420_1032778963537227_5321797644652118016_n.jpg" alt="Newspaper Article" style="width:100%; height:auto; object-fit:cover;">
+                        </div>
+                        <div class="gallery-item" style="aspect-ratio: auto; background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                            <img src="32160823_1032779003537223_7393170198674538496_n.jpg" alt="Newspaper Article" style="width:100%; height:auto; object-fit:cover;">
+                        </div>
+                        <div class="gallery-item" style="aspect-ratio: auto; background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                            <img src="32202714_1032778976870559_6295639289556369408_n.jpg" alt="Newspaper Article" style="width:100%; height:auto; object-fit:cover;">
+                        </div>
+                        <div class="gallery-item" style="aspect-ratio: auto; background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                            <img src="32260474_1033908760090914_4082125450002825216_n.jpg" alt="Newspaper Article" style="width:100%; height:auto; object-fit:cover;">
+                        </div>
+                        <div class="gallery-item" style="aspect-ratio: auto; background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                            <img src="32267315_1033908750090915_8562448463457943552_n.jpg" alt="Newspaper Article" style="width:100%; height:auto; object-fit:cover;">
+                        </div>
+                        <div class="gallery-item" style="aspect-ratio: auto; background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                            <img src="37057257_1085269241621532_75269898862854144_n.jpg" alt="Newspaper Article" style="width:100%; height:auto; object-fit:cover;">
+                        </div>
+                        <div class="gallery-item" style="aspect-ratio: auto; background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                            <img src="37095113_1085338761614580_3679887009519763456_n.jpg" alt="Newspaper Article" style="width:100%; height:auto; object-fit:cover;">
+                        </div>
+                        <div class="gallery-item" style="aspect-ratio: auto; background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                            <img src="37112082_1085338744947915_8202547607260626944_n.jpg" alt="Newspaper Article" style="width:100%; height:auto; object-fit:cover;">
+                        </div>
+                        <div class="gallery-item" style="aspect-ratio: auto; background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                            <img src="51692402_1246610145487440_3270678150647906304_n.jpg" alt="Newspaper Article" style="width:100%; height:auto; object-fit:cover;">
+                        </div>
+                        <div class="gallery-item" style="aspect-ratio: auto; background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                            <img src="51977441_1246610158820772_3388730704077520896_n.jpg" alt="Newspaper Article" style="width:100%; height:auto; object-fit:cover;">
+                        </div>
+                        <div class="gallery-item" style="aspect-ratio: auto; background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                            <img src="52582539_1247225208759267_3283958206707007488_n.jpg" alt="Newspaper Article" style="width:100%; height:auto; object-fit:cover;">
+                        </div>
+                        <div class="gallery-item" style="aspect-ratio: auto; background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                            <img src="70550996_1416050858543367_3373143408766877696_n.jpg" alt="Newspaper Article" style="width:100%; height:auto; object-fit:cover;">
+                        </div>
+                        <div class="gallery-item" style="aspect-ratio: auto; background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                            <img src="53083449_1261454874002967_200705814606905344_n.jpg" alt="Newspaper Article" style="width:100%; height:auto; object-fit:cover;">
+                        </div>
+                        <div class="gallery-item" style="aspect-ratio: auto; background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                            <img src="105551728_1688582641290186_5187459970778944941_n.jpg" alt="Newspaper Article" style="width:100%; height:auto; object-fit:cover;">
+                        </div>
+                        <div class="gallery-item" style="aspect-ratio: auto; background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                            <img src="69962820_1405987969549656_7145657839065759744_n.jpg" alt="Newspaper Article" style="width:100%; height:auto; object-fit:cover;">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Events Section -->
+                <div>
+                    <h3 style="color:#8B0000;font-size:1.5rem;margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid #FF8C00;display:inline-block;">🎉 Events</h3>
+                    <div class="gallery-grid" style="grid-template-columns: repeat(4, 1fr);">
+                        <div class="gallery-item" style="aspect-ratio: auto; background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                            <img src="1.jpg" alt="Event" style="width:100%; height:auto; object-fit:cover;">
+                        </div>
+                        <div class="gallery-item" style="aspect-ratio: auto; background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                            <img src="3.jpg" alt="Event" style="width:100%; height:auto; object-fit:cover;">
+                        </div>
+                        <div class="gallery-item" style="aspect-ratio: auto; background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                            <img src="6.jpg" alt="Event" style="width:100%; height:auto; object-fit:cover;">
+                        </div>
+                        <div class="gallery-item" style="aspect-ratio: auto; background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                            <img src="8.jpg" alt="Event" style="width:100%; height:auto; object-fit:cover;">
+                        </div>
+                        <div class="gallery-item" style="aspect-ratio: auto; background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                            <img src="9.jpg" alt="Event" style="width:100%; height:auto; object-fit:cover;">
+                        </div>
+                        <div class="gallery-item" style="aspect-ratio: auto; background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                            <img src="11.jpg" alt="Event" style="width:100%; height:auto; object-fit:cover;">
+                        </div>
+                        <div class="gallery-item" style="aspect-ratio: auto; background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                            <img src="16.jpg" alt="Event" style="width:100%; height:auto; object-fit:cover;">
+                        </div>
+                        <div class="gallery-item" style="aspect-ratio: auto; background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                            <img src="18.jpg" alt="Event" style="width:100%; height:auto; object-fit:cover;">
+                        </div>
+                        <div class="gallery-item" style="aspect-ratio: auto; background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                            <img src="505544651_3198542103627558_549178529942520454_n.jpg" alt="Event" style="width:100%; height:auto; object-fit:cover;">
+                        </div>
+                        <div class="gallery-item" style="aspect-ratio: auto; background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                            <img src="505231121_3198542193627549_1414126493037204416_n.jpg" alt="Event" style="width:100%; height:auto; object-fit:cover;">
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="max-width:800px;margin:40px auto;text-align:center;padding:30px;background:linear-gradient(135deg,#8B0000,#A52A2A);border-radius:15px;color:white;">
+                    <h3 style="color:#FF8C00;margin-bottom:15px;">📰 About Our Media Coverage</h3>
+                    <p>Sethsuwa Pranajeewa has been featured in numerous newspapers and media outlets over the years, highlighting our authentic Ayurvedic treatments and the miraculous results of our medicines. Our hospital continues to receive recognition for providing quality healthcare through traditional Ayurvedic methods.</p>
                 </div>
             </section>
         </div>
@@ -1248,9 +1363,20 @@ Diabetes, hypertension, Cholesterol and Cancer etc
         const pages = document.querySelectorAll(".page");
         const navLinks = document.querySelectorAll(".nav-link, .hero-btns a, .footer-links a[data-page]");
         function showPage(pageId) { pages.forEach(page => page.classList.remove("active")); document.getElementById(pageId).classList.add("active"); navLinks.forEach(link => { link.classList.remove("active"); if (link.getAttribute("data-page") === pageId) link.classList.add("active"); }); window.scrollTo(0, 0); }
+        function openLightbox(imgSrc) { document.getElementById("lightbox-img").src = imgSrc; document.getElementById("lightbox").classList.add("active"); }
+        function closeLightbox() { document.getElementById("lightbox").classList.remove("active"); }
         navLinks.forEach(link => { link.addEventListener("click", function(e) { e.preventDefault(); const pageId = this.getAttribute("data-page"); showPage(pageId); history.pushState(null, "", "#" + pageId); document.getElementById("navMenu").classList.remove("active"); document.getElementById("mobileToggle").classList.remove("active"); }); });
         document.getElementById("mobileToggle").addEventListener("click", function() { document.getElementById("navMenu").classList.toggle("active"); this.classList.toggle("active"); });
         document.querySelectorAll(".faq-question").forEach(btn => { btn.addEventListener("click", function() { this.parentElement.classList.toggle("active"); }); });
+        // Gallery lightbox - add click event to all gallery items
+        document.querySelectorAll(".gallery-item").forEach(item => {
+            item.addEventListener("click", function() {
+                const img = this.querySelector("img");
+                if (img) {
+                    openLightbox(img.src);
+                }
+            });
+        });
         document.getElementById("contactForm").addEventListener("submit", async function(e) {
             e.preventDefault();
             const form = this;
