@@ -438,7 +438,7 @@
         .submit-order-btn { width: 100%; padding: 18px; background: #FF8C00; color: #8B0000; border: none; border-radius: 10px; font-size: 1.2rem; font-weight: bold; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 10px; }
         .submit-order-btn:hover { background: #DAA520; transform: translateY(-2px); }
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .floating-cart { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: #FF8C00; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; box-shadow: 0 5px 20px rgba(255, 140, 0, 0.4); cursor: pointer; z-index: 999; transition: transform 0.3s ease; }
+        .floating-cart { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4); cursor: pointer; z-index: 999; transition: transform 0.3s ease; }
         .floating-cart:hover { transform: scale(1.1); }
         .floating-cart .cart-badge { position: absolute; top: -5px; right: -5px; background: #8B0000; color: #FF8C00; width: 24px; height: 24px; border-radius: 50%; font-size: 0.8rem; font-weight: bold; display: flex; align-items: center; justify-content: center; }
         .footer-new { background: linear-gradient(135deg,#8B0000,#A52A2A,#8B0000); position: relative; overflow: hidden; }
@@ -678,10 +678,10 @@ Diabetes, hypertension, Cholesterol and Cancer etc
                 </div>
             </div>
             <div class="stats">
-                <div class="stat-item"><span class="stat-number">10+</span><span class="stat-label">Years Experience</span></div>
-                <div class="stat-item"><span class="stat-number">5000+</span><span class="stat-label">Happy Clients</span></div>
-                <div class="stat-item"><span class="stat-number">50+</span><span class="stat-label">Products</span></div>
-                <div class="stat-item"><span class="stat-number">25+</span><span class="stat-label">Experts</span></div>
+                <div class="stat-item"><span class="stat-number" data-target="10">0</span><span class="stat-label">Years Experience</span></div>
+                <div class="stat-item"><span class="stat-number" data-target="5000">0</span><span class="stat-label">Happy Clients</span></div>
+                <div class="stat-item"><span class="stat-number" data-target="50">0</span><span class="stat-label">Products</span></div>
+                <div class="stat-item"><span class="stat-number" data-target="25">0</span><span class="stat-label">Experts</span></div>
             </div>
         </div>
         <div id="products" class="page">
@@ -752,6 +752,14 @@ Diabetes, hypertension, Cholesterol and Cancer etc
                     <div class="faq-item"><button class="faq-question">Are your products safe?</button><div class="faq-answer"><p>Yes, all our products are made from 100% natural ingredients and undergo strict quality testing.</p></div></div>
                     <div class="faq-item"><button class="faq-question">How long until I see results?</button><div class="faq-answer"><p>Results vary, but most people notice improvements within 2-4 weeks of consistent use.</p></div></div>
                     <div class="faq-item"><button class="faq-question">Do you ship internationally?</button><div class="faq-answer"><p>Yes, we ship worldwide with secure packaging and tracking.</p></div></div>
+                    <div class="faq-item"><button class="faq-question">What is Sethsuwa Pranajeewa?</button><div class="faq-answer"><p>Sethsuwa Pranajeewa is our flagship Ayurvedic medicine made according to an ancient herbal formula dating back over 3000 years. It contains over 200 herbs from deep in the Sri Lankan forests.</p></div></div>
+                    <div class="faq-item"><button class="faq-question">How do I use Pranajeewa Oil?</button><div class="faq-answer"><p>Pranajeewa Oil is typically applied externally on the affected area. For best results, gently massage the oil into the skin twice daily or as directed by our physicians.</p></div></div>
+                    <div class="faq-item"><button class="faq-question">What conditions does Pranajeewa help with?</button><div class="faq-answer"><p>Pranajeewa is known to help with joint pain, arthritis, muscle pain, paralysis, facial paralysis, sciatica, backache, and various nervous system disorders.</p></div></div>
+                    <div class="faq-item"><button class="faq-question">Do you offer consultations?</button><div class="faq-answer"><p>Yes, Sethsuwa Ayurveda Hospital offers consultations with experienced Ayurvedic doctors. Please contact us to schedule an appointment.</p></div></div>
+                    <div class="faq-item"><button class="faq-question">Are your products certified?</button><div class="faq-answer"><p>Yes, our products are GMP certified and manufactured under strict quality control standards. We follow traditional Ayurvedic methods combined with modern quality assurance.</p></div></div>
+                    <div class="faq-item"><button class="faq-question">How should I store the products?</button><div class="faq-answer"><p>Store our products in a cool, dry place away from direct sunlight. Keep out of reach of children.</p></div></div>
+                    <div class="faq-item"><button class="faq-question">What is your return policy?</button><div class="faq-answer"><p>We offer a satisfaction guarantee. If you're not satisfied with our products, please contact us within 30 days for a full refund or replacement.</p></div></div>
+                    <div class="faq-item"><button class="faq-question">How can I place an order?</button><div class="faq-answer"><p>You can place an order directly through our website, by calling our hotline, or by visiting Sethsuwa Ayurveda Hospital in person.</p></div></div>
                 </div>
             </section>
         </div>
@@ -761,9 +769,9 @@ Diabetes, hypertension, Cholesterol and Cancer etc
                 <div class="contact-wrapper">
                     <div class="contact-header"><h2>Contact Us</h2><p>Have questions? We'd love to hear from you!</p></div>
                     <div class="contact-grid">
-                        <div class="contact-card"><div class="card-icon">📞</div><h4>Call Us</h4><p>+94 11 234 5678</p><span>Mon - Sat, 8am - 6pm</span></div>
-                        <div class="contact-card"><div class="card-icon">✉️</div><h4>Email</h4><p>info@pranajeewa.com</p><span>We reply within 24 hours</span></div>
-                        <div class="contact-card"><div class="card-icon">📍</div><h4>Visit</h4><p>Sethsuwa Ayurweda Hospital</p><span>Sri Lanka</span></div>
+                        <div class="contact-card"><div class="card-icon">📞</div><h4>Call Us</h4><p>(+94) 112 962008</p><span>Mon - Sat, 8am - 6pm</span></div>
+                        <div class="contact-card"><div class="card-icon">✉️</div><h4>Email</h4><p>info@pranajeewa.lk</p><span>We reply within 24 hours</span></div>
+                        <div class="contact-card"><div class="card-icon">📍</div><h4>Visit</h4><p>Sethsuwa Pranajeewa</p><span>Sri Lanka</span></div>
                     </div>
                     <div style="max-width:100%;margin:30px auto;padding:0 5%;"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.798467179138!2d79.92330631477247!3d6.91465719514031!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2566a4074c3d%3A0x7e94f3c4c8e1c2d0!2sSethsuwa%20Ayurveda%20Hospital!5e0!3m2!1sen!2slk!4v1620000000000!5m2!1sen!2slk" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe></div>
                     <div class="contact-form-wrapper">
@@ -801,7 +809,6 @@ Diabetes, hypertension, Cholesterol and Cancer etc
                         <div class="checkout-summary">
                             <h3>📦 Order Summary</h3>
                             <div id="checkoutItems"></div>
-                            <div class="checkout-total"><span>Total Amount:</span><span id="checkoutTotal">$0.00</span></div>
                         </div>
                         <div class="payment-method">
                             <h3>💳 Payment Method</h3>
@@ -883,8 +890,8 @@ Diabetes, hypertension, Cholesterol and Cancer etc
         const products = [
             { id: 1, image: ["DSC02086.jpg", "DSC00565.jpg"], name: "Pranajeewa Oil and Capsule", price: 600, description: "Sethsuwa Pranajeewa is made according to an ancient herbal formula that dates back to over 3000 years. The current formula was recorded over 200 years ago and remained unchanged. It contains over 200 herbs from deep in the Sri Lankan forest. The fresh hand-picked herbs are washed, cut and dried to make this medicine which is simmered in heavy stainless steel cauldrons for over four months continuously during which time the goodness of the herbs are absorbed into the five oils. The procedure involved in the making of Pranajeewa Oil is accurate, yet it is as ancient today as it was two hundred years ago. The procedure takes an average of four to four and half months. Rare and precious herbs go into the making of the oil. Pranajeewa does not contain preservatives, colorings, poisonous chemicals, micro-organisms or bacteria, ash particles, sugar, or yeast additives because the ancient recipe does not call for these harmful additions.", benefits: "60ml - LKR 600 (Local) | 180ml - LKR 1,500 (Local) | 375ml - LKR 3,000 (Local) | 375ml Export - LKR 8,000 | Capsule 48 - LKR 1,500 | Capsule 80 - LKR 2,500", size: "60ml" },
             { id: 2, image: "DSC01014.jpg", name: "Maha Narayana Oil", price: 450, description: "Narayana Oil is being used for thousands of years in Ayurvedic System of medicine. It is indicated in conditions like paralysis, facial paralysis, back ache, sciatica, impotence, muscle waisting, as an external application on head for high blood pressure etc. It is very effective for massage purposes even for healthy people as it rejuvenate the body.  Narayana Oil is being used for thousands of years in Ayurvedic System of medicine. It is indicated in conditions like paralysis, facial paralysis, back ache, sciatica, impotence, muscle waisting, as an external application on head for high blood pressure etc. It is very effective for massage purposes even for healthy people as it rejuvenate the body.", benefits: "Maha Narayanaya 60ml - LKR 450 | Maha Narayanaya 180ml - LKR 1250", size: "60ml" },
-            { id: 3, image: "DSC01102.jpg", name: "Maha Siddartha", price: 400, description: "Maha Siddartha made with Authentic Quality herbs according to an ancient recipe. Siddhartha Oil is being used for thousands of year in Ayurvedic system of medicine. Effective for the relief of nerve and muscular pain. It is indicated in conditions like Paralysis, facial paralysis, sciatica as an external application. Particularly effective for muscular pains in the chest, neck and shoulders. Maha Siddartha made with Authentic Quality herbs according to an ancient recipe. Siddhartha Oil is being used for thousands of year in Ayurvedic system of medicine. Effective for the relief of nerve and muscular pain. It is indicated in conditions like Paralysis, facial paralysis, sciatica as an external application. Particularly effective for muscular pains in the chest, neck and shoulders.", benefits: "Maha Siddartha 60ml - LKR 400 | Maha Siddartha 180ml - LKR 1050", size: "60ml" },
-            { id: 4, image: "DSC00882.jpg", name: "Blood Purifier", price: 7500, description: "Natural blood cleansing formula to purify your body.", benefits: "Cleans blood • Clear skin • Removes toxins • Improves circulation • Healthy glow", size: "250ml" },
+            { id: 3, image: "DSC00462.jpg", name: "Biogen Moringa", price: 1100, description: "Moringa is one of the most powerful health enhancing plant. Recent scientific research has proven that these humble leaves are in fact a power house of nutritional value. As a natural supplement for your busy life Biogen capsules are enriched with vitamins minerals amino acids and antioxidants. Taking Sethsuwa Biogen capsules as an every day dietary supplement it will boost your energy level and immune system and lead to a healthy strong life. Moringa is one of the most powerful health enhancing plant. Recent scientific research has proven that these humble leaves are in fact a power house of nutritional value. As a natural supplement for your busy life Biogen capsules are enriched with vitamins minerals amino acids and antioxidants. Taking Sethsuwa Biogen capsules as an every day dietary supplement it will boost your energy level and immune system and lead to a healthy strong life. Herbal Ingredients :- Each contain 400mg of 100% Moringa leaf dry powder.", benefits: "Moringa 90 Caps - LKR 1100", size: "90 Caps" },
+            { id: 4, image: "DSC01102.jpg", name: "Maha Siddartha", price: 400, description: "Maha Siddartha made with Authentic Quality herbs according to an ancient recipe. Siddhartha Oil is being used for thousands of year in Ayurvedic system of medicine. Effective for the relief of nerve and muscular pain. It is indicated in conditions like Paralysis, facial paralysis, sciatica as an external application. Particularly effective for muscular pains in the chest, neck and shoulders. Maha Siddartha made with Authentic Quality herbs according to an ancient recipe. Siddhartha Oil is being used for thousands of year in Ayurvedic system of medicine. Effective for the relief of nerve and muscular pain. It is indicated in conditions like Paralysis, facial paralysis, sciatica as an external application. Particularly effective for muscular pains in the chest, neck and shoulders.", benefits: "Maha Siddartha 60ml - LKR 400 | Maha Siddartha 180ml - LKR 1050", size: "60ml" },
             { id: 5, image: "DSC00921.jpg", name: "Digestive Health", price: 6500, description: "Improve digestion naturally with our Ayurvedic blend.", benefits: "Better digestion • Less bloating • Gut health • Nutrient absorption • Regular metabolism", size: "250ml" },
             { id: 6, image: "DSC00990.jpg", name: "Sleep Support", price: 9000, description: "Get restful sleep naturally with our herbal formula.", benefits: "Deep sleep • Relaxation • Wake up refreshed • Insomnia relief • Natural remedy", size: "250ml" },
             { id: 7, image: "DSC00619.jpg", name: "Energy Vitality", price: 8500, description: "Boost your energy levels naturally with our powerful blend.", benefits: "More energy • Reduced fatigue • Better focus • Natural boost • All day vitality", size: "250ml" },
@@ -985,9 +992,11 @@ Diabetes, hypertension, Cholesterol and Cancer etc
             if (!currentProduct) return;
             const isPranajeewa = currentProduct.id === 1;
             const isNarayana = currentProduct.id === 2;
-            const isMahaSiddartha = currentProduct.id === 3;
+            const isMahaSiddartha = currentProduct.id === 4;
+            const isBiogen = currentProduct.id === 3;
             let sizeOptions = '';
             let priceDisplay = '';
+            let showSizeSelector = true;
             
             // Get images - support both array and single image
             const images = Array.isArray(currentProduct.image) ? currentProduct.image : [currentProduct.image];
@@ -1019,13 +1028,17 @@ Diabetes, hypertension, Cholesterol and Cancer etc
                 ];
                 sizeOptions = sizes.map(s => '<option value="' + s.value + '">' + s.label + ' - ' + formatPrice(s.value) + '</option>').join('');
                 priceDisplay = formatPrice(400);
+            } else if (isBiogen) {
+                showSizeSelector = false;
+                priceDisplay = formatPrice(currentProduct.price);
             } else {
                 sizeOptions = '<option value="1">250ml - Standard Size</option><option value="1.6">400ml - Large Size (+60%)</option>';
                 priceDisplay = formatPrice(currentProduct.price);
             }
             const container = document.getElementById("productDetailContent");
+            const sizeSelectorHtml = showSizeSelector ? '<div class="size-selector"><label>📦 Select Size:</label><select id="bottleSize" onchange="updatePriceBySize()">' + sizeOptions + '</select></div>' : '';
             
-            container.innerHTML = '<div class="product-detail-image"><div class="product-detail-main-img"><img src="' + mainImage + '" alt="' + currentProduct.name + '" id="mainProductImage"></div>' + (thumbnailHtml ? '<div class="product-detail-thumbnails">' + thumbnailHtml + '</div>' : '') + '</div><div class="product-detail-info"><h2>' + currentProduct.name + '</h2><div class="detail-price" id="detailPrice">' + priceDisplay + '</div><div class="size-selector"><label>📦 Select Size:</label><select id="bottleSize" onchange="updatePriceBySize()">' + sizeOptions + '</select></div><div class="product-description-full"><h3>📝 Product Description</h3><p>' + currentProduct.description + '</p></div><div class="detail-actions"><button class="product-btn" onclick="addToCart(' + currentProduct.id + ')">🛒 Add to Cart</button></div></div>';
+            container.innerHTML = '<div class="product-detail-image"><div class="product-detail-main-img"><img src="' + mainImage + '" alt="' + currentProduct.name + '" id="mainProductImage"></div>' + (thumbnailHtml ? '<div class="product-detail-thumbnails">' + thumbnailHtml + '</div>' : '') + '</div><div class="product-detail-info"><h2>' + currentProduct.name + '</h2><div class="detail-price" id="detailPrice">' + priceDisplay + '</div>' + sizeSelectorHtml + '<div class="product-description-full"><h3>📝 Product Description</h3><p>' + currentProduct.description + '</p></div><div class="detail-actions"><button class="product-btn" onclick="addToCart(' + currentProduct.id + ')">🛒 Add to Cart</button></div></div>';
         }
         function changeMainImage(thumb, imgSrc) {
             const mainImg = document.getElementById('mainProductImage');
@@ -1041,7 +1054,7 @@ Diabetes, hypertension, Cholesterol and Cancer etc
         }
         function updatePriceBySize() {
             const sizeSelect = document.getElementById("bottleSize");
-            if (currentProduct.id === 1 || currentProduct.id === 2 || currentProduct.id === 3) {
+            if (currentProduct.id === 1 || currentProduct.id === 2 || currentProduct.id === 4) {
                 const newPrice = parseFloat(sizeSelect.value);
                 document.getElementById("detailPrice").textContent = formatPrice(newPrice);
             } else {
@@ -1059,7 +1072,7 @@ Diabetes, hypertension, Cholesterol and Cancer etc
             // Get the main image - handle array or single image
             const productImage = Array.isArray(product.image) ? product.image[0] : product.image;
             
-            if (productId === 1 || productId === 2 || productId === 3) {
+            if (productId === 1 || productId === 2 || productId === 4) {
                 // Size values are already in LKR for Pranajeewa, Narayana and Maha Siddartha
                 // If no size selector (like in featured products), use default size
                 if (!sizeSelect) {
@@ -1119,7 +1132,7 @@ Diabetes, hypertension, Cholesterol and Cancer etc
         function renderCart() {
             const cartItems = document.getElementById("cartItems");
             if (cart.length === 0) {
-                cartItems.innerHTML = '<div class="empty-cart"><div style="font-size:70px;margin-bottom:20px;">🛒</div><h3>Your Cart is Empty</h3><p>Add some products to get started</p><a href="#products" class="btn btn-yellow" data-page="products" style="margin-top:10px;">Shop Now →</a></div>';
+                cartItems.innerHTML = '<div class="empty-cart"><div style="font-size:70px;margin-bottom:20px;">🛒</div><h3>Your Cart is Empty</h3><p>Add some products to get started</p><a href="#products" onclick="showPage(\'products\'); return false;" class="btn btn-yellow" style="margin-top:10px;">Shop Now →</a></div>';
                 return;
             }
             let html = '<div class="cart-items-list">'; let total = 0;
@@ -1211,7 +1224,27 @@ Diabetes, hypertension, Cholesterol and Cancer etc
             submitBtn.innerHTML = '📧 Place Order';
             submitBtn.disabled = false;
         });
-        window.addEventListener("load", function() { fetchExchangeRates(); renderProducts(); renderFeaturedProducts(); setTimeout(function() { document.getElementById("loading-page").classList.add("hidden"); document.getElementById("main-website").classList.add("visible"); }, 2000); });
+        // Counter animation function
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                const duration = 2000; // 2 seconds
+                const increment = target / (duration / 16);
+                let current = 0;
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < target) {
+                        counter.textContent = Math.floor(current).toLocaleString();
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.textContent = target.toLocaleString() + '+';
+                    }
+                };
+                updateCounter();
+            });
+        }
+        window.addEventListener("load", function() { fetchExchangeRates(); renderProducts(); renderFeaturedProducts(); animateCounters(); setTimeout(function() { document.getElementById("loading-page").classList.add("hidden"); document.getElementById("main-website").classList.add("visible"); }, 2000); });
         const pages = document.querySelectorAll(".page");
         const navLinks = document.querySelectorAll(".nav-link, .hero-btns a, .footer-links a[data-page]");
         function showPage(pageId) { pages.forEach(page => page.classList.remove("active")); document.getElementById(pageId).classList.add("active"); navLinks.forEach(link => { link.classList.remove("active"); if (link.getAttribute("data-page") === pageId) link.classList.add("active"); }); window.scrollTo(0, 0); }
